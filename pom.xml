@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+<<<<<<< HEAD
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>muledbproject</artifactId>
+=======
+	<groupId>569be4f5-6a9e-4030-9c44-26f4bfd1123a</groupId>
+	<artifactId>SampleMule</artifactId>
+>>>>>>> d7fd9fde56bd601615e510c5ad39f84b47dd7e8a
 	<version>${project.version.runtime}</version>
 	<packaging>mule-application</packaging>
 
