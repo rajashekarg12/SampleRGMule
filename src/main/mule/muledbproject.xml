@@ -12,7 +12,15 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 	<configuration-properties doc:name="Configuration properties" doc:id="7400cfa5-030a-45f1-9e4b-1cd890aba17b" file="config/${mule.env}.yaml" />
 	<validation:config name="Validation_Config" doc:name="Validation Config" doc:id="5b558ba5-8520-4709-9ca8-6bf6851a8c08" />
 	<flow name="muledbprojectFlow" doc:id="c4dae025-0f6e-43ee-936b-fcc203f6c428" >
-		<http:listener doc:name="Listener" doc:id="d7431c6f-09f0-4722-8fbd-e4e6b2e31091" config-ref="HTTP_Listener_config" path="/checkDBEnv"/>
+		<http:listener doc:name="Listener" doc:id="d7431c6f-09f0-4722-8fbd-e4e6b2e31091" config-ref="HTTP_Listener_config" path="/checkDBEnv">
+			<http:response >
+				<http:headers ><![CDATA[#[output application/java
+---
+{
+	Content-Type : text/plain
+}]]]></http:headers>
+			</http:response>
+		</http:listener>
 		<set-payload value="#['Hi ' ++ Mule::p('db.user') ++ ', ' ++ Mule::p('app.message')++ 'your password is '++ Mule::p('db.password')]" doc:name="Set Payload" doc:id="1f470177-aa37-4c30-bfb6-d459d63575aa" />
 	</flow>
 </mule>
