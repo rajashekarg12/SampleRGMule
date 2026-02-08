@@ -2,4 +2,4 @@ db:
   user: "sb_user"
   password: "sb_password"
 app:
-  message: "Welcome to the Sandbox Environment"
+  message: "Welcome to the Sandbox Environment, updated"
