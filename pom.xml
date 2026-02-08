@@ -2,9 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+<<<<<<< HEAD
 	<groupId>com.mycompany</groupId>
 	<artifactId>muledbproject</artifactId>
 	<version>1.0-SNAPSHOT</version>
+=======
+	<groupId>569be4f5-6a9e-4030-9c44-26f4bfd1123a</groupId>
+	<artifactId>SampleMule</artifactId>
+	<version>${project.version.runtime}</version>
+>>>>>>> 2764814f96d5bf28c60057408b99c66761529828
 	<packaging>mule-application</packaging>
 
 	<name>MySampleMuleProject</name>
@@ -29,6 +35,29 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+                    <classifier>mule-application</classifier>
+                    <cloudhub2Deployment>
+                        <uri>https://anypoint.mulesoft.com</uri>
+                        <!-- <applicationName>mule4sample</applicationName> -->
+						<applicationName>${deploymentname}</applicationName>
+                        <connectedAppClientId>${anypointclientId}</connectedAppClientId>
+                        <connectedAppClientSecret>${anypointclientSecret}</connectedAppClientSecret>
+                        <connectedAppGrantType>client_credentials</connectedAppGrantType>
+                        <!-- <username>${username}</username>
+                        <password>${password}</password> -->
+                        <businessGroupId>${bgid}</businessGroupId>
+                        <!-- required -->
+                        <replicas>1</replicas>
+                        <vCores>0.1</vCores>
+                        <muleVersion>${app.runtime}</muleVersion>
+                        <releaseChannel>LTS</releaseChannel>
+                        <javaVersion>17</javaVersion>
+                        <target>${target}</target>
+                        <provider>MC</provider>
+                        <environment>${env}</environment>
+                    </cloudhub2Deployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -86,7 +115,7 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	distributionManagement>
+	<distributionManagement>
 <repository>
 <id>anypoint-exchange-v3</id>
 <name>Anypoint Exchange</name>
