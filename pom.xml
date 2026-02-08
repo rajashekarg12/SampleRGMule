@@ -4,7 +4,7 @@
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>muledbproject</artifactId>
-	<version>${project.version.runtime}</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>MySampleMuleProject</name>

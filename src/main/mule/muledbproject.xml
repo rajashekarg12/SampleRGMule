@@ -13,7 +13,6 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 	<validation:config name="Validation_Config" doc:name="Validation Config" doc:id="5b558ba5-8520-4709-9ca8-6bf6851a8c08" />
 	<flow name="muledbprojectFlow" doc:id="c4dae025-0f6e-43ee-936b-fcc203f6c428" >
 		<http:listener doc:name="Listener" doc:id="d7431c6f-09f0-4722-8fbd-e4e6b2e31091" config-ref="HTTP_Listener_config" path="/checkDBEnv"/>
-		<validation:is-true doc:name="Is Valid Request" doc:id="b9e6645b-4f08-4393-841c-382470fa01e2" config-ref="Validation_Config" expression="#[p('db.password') == p('welcome1')]" message='"Please Check Credentials'/>
-		<set-payload value="#['Hi ' ++ Mule::p('db.user') ++ ', ' ++ Mule::p('app.message')]" doc:name="Set Payload" doc:id="1f470177-aa37-4c30-bfb6-d459d63575aa" />
+		<set-payload value="#['Hi ' ++ Mule::p('db.user') ++ ', ' ++ Mule::p('app.message')++ 'your password is '++ Mule::p('db.password')]" doc:name="Set Payload" doc:id="1f470177-aa37-4c30-bfb6-d459d63575aa" />
 	</flow>
 </mule>
