@@ -6,21 +6,21 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
 http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2eb56642-5c33-41f8-8ab3-ef24a3948a9a" >
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b9324a92-7a64-4745-9088-64c5aa447e5a" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
-	<configuration-properties doc:name="Configuration properties" doc:id="7400cfa5-030a-45f1-9e4b-1cd890aba17b" file="config/${mule.env}.yaml" />
-	<validation:config name="Validation_Config" doc:name="Validation Config" doc:id="5b558ba5-8520-4709-9ca8-6bf6851a8c08" />
-	<flow name="muledbprojectFlow" doc:id="c4dae025-0f6e-43ee-936b-fcc203f6c428" >
-		<http:listener doc:name="Listener" doc:id="d7431c6f-09f0-4722-8fbd-e4e6b2e31091" config-ref="HTTP_Listener_config" path="/checkDBEnv">
+	<configuration-properties doc:name="Configuration properties" doc:id="8459fef9-9096-4fc0-be5d-b35ad8531f28" file="config/${mule.env}.yaml" />
+	<validation:config name="Validation_Config" doc:name="Validation Config" doc:id="8a43cabd-3b74-42d6-8310-f1d0654a1810" />
+	<flow name="muledbprojectFlow" doc:id="1abaf01a-547f-4072-a5f1-3249006f30b8" >
+		<http:listener doc:name="Listener" doc:id="14c43ab5-ae36-4024-aad6-e180f2676aa4" config-ref="HTTP_Listener_config" path="/checkDBEnv">
 			<http:response >
 				<http:headers ><![CDATA[#[output application/java
 ---
 {
-	Content-Type : text/plain
+	contentType : "plain/text"
 }]]]></http:headers>
 			</http:response>
 		</http:listener>
-		<set-payload value="#['Hi ' ++ Mule::p('db.user') ++ ', ' ++ Mule::p('app.message')++ 'your password is '++ Mule::p('db.password')]" doc:name="Set Payload" doc:id="1f470177-aa37-4c30-bfb6-d459d63575aa" />
+		<set-payload value="#['Hi ' ++ Mule::p('db.user') ++ ', ' ++ Mule::p('app.message')++ 'your password is '++ Mule::p('db.password')]" doc:name="Set Payload" doc:id="2df00c56-71e8-4f19-8ab8-73ddcf8e320a" />
 	</flow>
 </mule>
