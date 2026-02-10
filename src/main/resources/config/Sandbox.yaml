@@ -1,5 +1,9 @@
+# Sandbox.yaml
 db:
-  user: "sb_user"
-  password: "sb_password"
+  host: "localhost"
+  port: "1521"
+  user: "system"
+  password: "${MY_PWD}" 
+  serviceName: "XEPDB1"
 app:
   message: "Welcome to the Sandbox Environment"
