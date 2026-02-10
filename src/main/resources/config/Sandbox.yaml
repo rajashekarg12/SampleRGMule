@@ -1,9 +1,5 @@
 # Sandbox.yaml
 db:
-  host: "tcp://zwoxr-2401-4900-1c0e-2fb4-10ec-5b0e-697-c001.a.free.pinggy.link"
-  port: "37855"
-  user: "system"
   password: "${MY_MULE_PWD}" 
-  serviceName: "XEPDB1"
 app:
   message: "Welcome to the Sandbox Environment"
