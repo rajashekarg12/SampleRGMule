@@ -1,5 +1,0 @@
-db:
-  user: "sb_user"
-  password: "sb_password"
-app:
-  message: "hello ,Welcome to the Sandbox Environment, updated"
