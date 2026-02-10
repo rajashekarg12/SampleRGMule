@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:validation="http://www.mulesoft.org/schema/mule/validation" xmlns:db="http://www.mulesoft.org/schema/mule/db"
-	xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+<mule xmlns:tracing="http://www.mulesoft.org/schema/mule/tracing" xmlns:validation="http://www.mulesoft.org/schema/mule/validation"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
-http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd">
+http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd
+http://www.mulesoft.org/schema/mule/tracing http://www.mulesoft.org/schema/mule/tracing/current/mule-tracing.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b9324a92-7a64-4745-9088-64c5aa447e5a" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="8459fef9-9096-4fc0-be5d-b35ad8531f28" file="config/${mule.env}.yaml" />
-	<validation:config name="Validation_Config" doc:name="Validation Config" doc:id="8a43cabd-3b74-42d6-8310-f1d0654a1810" />
-	<db:config name="Database_Config" doc:name="Database Config" doc:id="3635d15b-974c-4b13-9c0c-bb267eadc188" >
-		<db:oracle-connection host="${db.host}" user="${db.user}" password="${db.password}" serviceName="${db.serviceName}" port="${db.port}"/>
-	</db:config>
+
 	<flow name="muledbprojectFlow" doc:id="1abaf01a-547f-4072-a5f1-3249006f30b8" >
 		<http:listener doc:name="Listener" doc:id="14c43ab5-ae36-4024-aad6-e180f2676aa4" config-ref="HTTP_Listener_config" path="/a">
 		</http:listener>
-		<db:select doc:id="b77a51ce-06ae-4b76-8489-ffa2a073228b" doc:name="selectDB" config-ref="Database_Config">
-			<db:sql ><![CDATA[SELECT user_name
-FROM (
-    SELECT user_name
-    FROM FF.FLX_USER
-    ORDER BY DBMS_RANDOM.VALUE
-)
-WHERE ROWNUM = 1;
-]]></db:sql>
-		</db:select>
-		<set-payload value="#['Hi ' ++ payload[0].USER_NAME ++ ', ' ++ Mule::p('app.message')]" doc:name="Set Payload" doc:id="2df00c56-71e8-4f19-8ab8-73ddcf8e320a" mimeType="text/plain"/>
-	</flow>
+		<logger level="INFO" doc:name="Logger" doc:id="1bf67dc9-6b65-4478-8192-aa121f27eedc" message="&quot;Password is correct: &quot; ++ (p('db.password') == 'welcome1')"/>
+		<set-payload value="#[&quot;Validation Result: &quot; ++ (Mule::p('db.password') == 'welcome1')]" doc:name="Set Payload" doc:id="e9136d56-2ca8-4193-ad66-4846bc69dbee" mimeType="text/plain"/>
+	
+	
+</flow>
 </mule>
