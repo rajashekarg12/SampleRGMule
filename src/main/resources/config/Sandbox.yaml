@@ -3,7 +3,7 @@ db:
   host: "localhost"
   port: "1521"
   user: "system"
-  password: "${MY_PWD}" 
+  password: "${MY_MULE_PWD}" 
   serviceName: "XEPDB1"
 app:
   message: "Welcome to the Sandbox Environment"
