@@ -1,5 +1,2 @@
-# Sandbox.yaml
-db:
-  password: "![R1CBXNiKbqzyNLNSNEzQ8Q==]" 
 app:
   message: "Welcome to the Sandbox Environment"
