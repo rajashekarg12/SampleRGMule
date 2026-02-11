@@ -1,2 +1,5 @@
+# Sandbox.yaml
+user:
+  name: "RUNTIME_USER" 
 app:
   message: "Welcome to the Sandbox Environment"
