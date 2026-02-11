@@ -11,15 +11,10 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b9324a92-7a64-4745-9088-64c5aa447e5a" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
-<secure-properties:config name="Secure_Properties_Config" 
-    doc:name="Secure Properties Config" 
-    file="config/${mule.env}.yaml" 
-    key="${secure.key}">
-    <secure-properties:encrypt algorithm="Blowfish" mode="CBC"/>
-</secure-properties:config>
+	<configuration-properties doc:name="Configuration properties" doc:id="d2c39aa8-3b41-4535-b285-5f0bfaa93062" file="config/${mule.env}.yaml" />
 	<flow name="muledbprojectFlow" doc:id="1abaf01a-547f-4072-a5f1-3249006f30b8" >
 		<http:listener doc:name="Listener" doc:id="14c43ab5-ae36-4024-aad6-e180f2676aa4" config-ref="HTTP_Listener_config" path="/a">
 		</http:listener>
-		<set-payload value="#['Decrypted: [' ++ Mule::p('secure::db.password') ++ ']']" doc:name="Set Payload" doc:id="e9136d56-2ca8-4193-ad66-4846bc69dbee" mimeType="text/plain"/>	
+		<set-payload value="#['Hi ' ++ Mule::p('user.name')++', ' ++  Mule::p('app.message')]" doc:name="Set Payload" doc:id="e9136d56-2ca8-4193-ad66-4846bc69dbee" mimeType="text/plain"/>	
 </flow>
 </mule>
