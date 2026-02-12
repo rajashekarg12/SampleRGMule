@@ -1,4 +1,4 @@
 user:
-  name: '${RUNTIME_USER}'
+  name: RUNTIME_USER
 app:
   message: Welcome to the Sandbox Environment
