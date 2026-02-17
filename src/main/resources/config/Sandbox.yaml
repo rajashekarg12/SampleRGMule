@@ -1,2 +1,2 @@
 app.message: "Welcome to the Sandbox Environment"
-user.name: "${MY_USER_NAME_VALUE}"
+
