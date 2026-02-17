@@ -1,2 +1,5 @@
+---
+user:
+  name: ${MY_USER_NAME_VALUE}
 app:
-  message: "Welcome to the Production Environment"
+  message: Welcome to the Production Environment
