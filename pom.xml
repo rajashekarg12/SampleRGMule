@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>569be4f5-6a9e-4030-9c44-26f4bfd1123a</groupId>
-	<artifactId>SampleMule</artifactId>
+	<artifactId>secure-echo-flow</artifactId>
 	<version>${{FD_PROJECT_VERSION}}</version>
 	<packaging>mule-application</packaging>
 
