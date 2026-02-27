@@ -8,18 +8,24 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
 http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd
 http://www.mulesoft.org/schema/mule/tracing http://www.mulesoft.org/schema/mule/tracing/current/mule-tracing.xsd
 http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b9324a92-7a64-4745-9088-64c5aa447e5a" >
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="ca26b5b5-de5b-488d-964e-71340679b5fc" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
-	</http:listener-config>
-<secure-properties:config name="Secure_Properties_Config" 
+	</http:listener-config>	
+	<secure-properties:config name="Secure_Properties_Config" 
     doc:name="Secure Properties Config" 
     file="config/${mule.env}.yaml" 
     key="${secure.key}">
     <secure-properties:encrypt algorithm="Blowfish" mode="CBC"/>
 </secure-properties:config>
-	<flow name="muledbprojectFlow" doc:id="1abaf01a-547f-4072-a5f1-3249006f30b8" >
-		<http:listener doc:name="Listener" doc:id="14c43ab5-ae36-4024-aad6-e180f2676aa4" config-ref="HTTP_Listener_config" path="/a">
+	<configuration-properties doc:name="Configuration properties" doc:id="1f30c0af-6a67-4bac-b506-6fe1cbda94b0" file="config/${mule.env}.yaml" />
+	<flow name="muledbprojectFlow" doc:id="4b2a575f-345a-4329-8f04-ebe6975743b9" >
+		<http:listener doc:name="Listener" doc:id="0aaa6492-cf8a-44c0-92a6-13435e1d8d52" config-ref="HTTP_Listener_config" path="/a">
 		</http:listener>
-		<set-payload value="#['Decrypted: [' ++ Mule::p('secure::db.password') ++ ']']" doc:name="Set Payload" doc:id="e9136d56-2ca8-4193-ad66-4846bc69dbee" mimeType="text/plain"/>	
+		<set-payload 
+    value="#['Hi ' ++ p('MY_USER_NAME_VALUE') ++ &#10;', ' ++ p('app.message') ++ &#10;', your decrypted password is ' ++ &#10;Mule::p('secure::db.password')]" 
+    doc:name="Set Payload" 
+    doc:id="6410dd3e-9c9d-49e9-976f-27b1424d1422" 
+    mimeType="text/plain"/>
+		
 </flow>
 </mule>
