@@ -1,5 +1,5 @@
 ---
-user:
-  name: ${MY_USER_NAME_VALUE}
+db:
+  password: "![R1CBXNiKbqzyNLNSNEzQ8Q==]"
 app:
-  message: Welcome to the QA Environment
+  message: Welcome to the Dev Environment
