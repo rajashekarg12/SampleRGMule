@@ -66,11 +66,8 @@
 			<version>2.0.8</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
-		<dependency>
-			<groupId>com.mycompany</groupId>
-			<artifactId>ojdbc11</artifactId>
-			<version>0.1</version>
-		</dependency>
+
+		
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-tracing-module</artifactId>
