@@ -1,5 +1,5 @@
 ---
 db:
-  password: "![R1CBXNiKbqzyNLNSNEzQ8Q==]"
+  password: "![${DB_PASSWORD}]"
 app:
   message: ${QA_MESSAGE}
